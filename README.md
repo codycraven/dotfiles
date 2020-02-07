@@ -10,3 +10,8 @@ Check/install environment dependencies:
 ./deps.sh
 ```
 
+Install dotfiles into host:
+
+```sh
+./copy.sh
+```
