@@ -28,3 +28,9 @@ copy_files_from_dir_to_dir() {
 }
 
 copy_files_from_dir_to_dir home "$HOME"
+
+
+tput smso
+echo "Installing neovim plugins"
+tput rmso
+nvim --headless +PlugInstall +qa
