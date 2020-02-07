@@ -16,6 +16,7 @@ Plug 'sheerun/vim-polyglot' " Language packs
 call plug#end()
 
 syntax on
+colorscheme default
 
 let mapleader="\<SPACE>"
 set shiftwidth=0
@@ -29,11 +30,20 @@ map <Leader>e :NERDTreeToggle<CR>
 " vim-airline
 set noshowmode
 
-" show trailing whitespace
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * call clearmatches()
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+highlight TrailingWhitespace ctermbg=red guibg=red
+match TrailingWhitespace /\s\+$/
+augroup trailingwhitespace
+	autocmd BufWinEnter * match TrailingWhitespace /\s\+$/
+	autocmd InsertEnter * call clearmatches()
+	autocmd InsertLeave * match TrailingWhitespace /\s\+$/
+	autocmd BufWinLeave * call clearmatches()
+augroup END
+
+set relativenumber number
+augroup numbertoggle
+	autocmd!
+	autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+	autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
 
