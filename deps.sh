@@ -22,5 +22,6 @@ check_app() {
 	fi
 }
 
+check_app git git
 check_app nvim neovim
 
