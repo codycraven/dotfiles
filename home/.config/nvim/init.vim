@@ -10,6 +10,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } " Explorer
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Completions
 Plug 'vim-airline/vim-airline' " Helpful status bar
+Plug 'editorconfig/editorconfig-vim' " Editorconfig
 call plug#end()
 
 let mapleader="\<SPACE>"
