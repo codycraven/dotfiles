@@ -12,12 +12,14 @@ Plug 'vim-airline/vim-airline' " Helpful status bar
 Plug 'editorconfig/editorconfig-vim' " Indent/EOL formatting rules
 Plug 'prettier/vim-prettier', { 'do': 'npm install' } " Code formatter
 Plug 'sheerun/vim-polyglot' " Language packs
+Plug 'preservim/nerdcommenter' " Language generic comments
 " Completions
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Framework
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } " JS support
 call plug#end()
 
 syntax on
+filetype plugin on
 colorscheme default
 
 let mapleader="\<SPACE>"
@@ -33,6 +35,11 @@ map <Leader>e :NERDTreeToggle<CR>
 
 " vim-airline
 set noshowmode
+
+" nerdcommenter
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDTrimTrailingWhitespace = 1
 
 highlight TrailingWhitespace ctermbg=red guibg=red
 match TrailingWhitespace /\s\+$/
