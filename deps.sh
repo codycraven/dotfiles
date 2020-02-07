@@ -2,7 +2,7 @@
 
 RAN_UPDATE=0
 
-update() {
+apt_update() {
 	if [ $RAN_UPDATE -eq 0 ]; then
 		tput smso
 		echo "Updating package information"
@@ -12,17 +12,24 @@ update() {
 	RAN_UPDATE=1
 }
 
-check_app() {
-	if ! command -v $1 >/dev/null; then
-		update
-		tput smso
-		echo "Installing missing $2"
-		tput rmso
-		sudo apt install "$2" -y
-	fi
+apt_install() {
+	apt_update
+	tput smso
+	echo "Installing missing $2"
+	tput rmso
+	sudo apt install "$1" -y
 }
 
-check_app curl curl
-check_app git git
-check_app nvim neovim
+snap_install() {
+	sudo snap install "$1" --classic
+}
+
+has() {
+	command -v $1 >/dev/null
+}
+
+has curl || apt_install curl
+has git || apt_install git
+has node || snap_install node
+has nvim || apt_install neovim
 

@@ -10,11 +10,18 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } " Explorer
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Completions
 Plug 'vim-airline/vim-airline' " Helpful status bar
-Plug 'editorconfig/editorconfig-vim' " Editorconfig
+Plug 'editorconfig/editorconfig-vim' " Indent/EOL formatting rules
+Plug 'prettier/vim-prettier', { 'do': 'npm install' } " Code formatter
+Plug 'sheerun/vim-polyglot' " Language packs
 call plug#end()
 
-let mapleader="\<SPACE>"
+syntax on
 
+let mapleader="\<SPACE>"
+set shiftwidth=0
+set tabstop=4
+
+" nerdtree
 let g:NERDTreeShowHidden=1
 let g:NERDTreeWinPos = "right"
 map <Leader>e :NERDTreeToggle<CR>
