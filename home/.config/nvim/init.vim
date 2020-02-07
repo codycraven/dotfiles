@@ -13,6 +13,7 @@ Plug 'editorconfig/editorconfig-vim' " Indent/EOL formatting rules
 Plug 'prettier/vim-prettier', { 'do': 'npm install' } " Code formatter
 Plug 'sheerun/vim-polyglot' " Language packs
 Plug 'preservim/nerdcommenter' " Language generic comments
+Plug 'airblade/vim-gitgutter'
 " Completions
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Framework
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } " JS support
@@ -25,8 +26,9 @@ colorscheme default
 let mapleader="\<SPACE>"
 set shiftwidth=0
 set tabstop=4
+set updatetime=100
 
-map <Leader>h :nohlsearch<CR>
+map <Leader>- :nohlsearch<CR>
 
 " nerdtree
 let g:NERDTreeShowHidden = 1
@@ -40,6 +42,18 @@ set noshowmode
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDTrimTrailingWhitespace = 1
+
+" gitgutter
+let g:gitgutter_escape_grep = 1 " prevent issues with color output alias
+"let g:gitgutter_diff_args = '-w' " ignore whitespace
+let g:gitgutter_sign_added = '▎'
+let g:gitgutter_sign_modified = '▎'
+let g:gitgutter_sign_removed = '▏'
+let g:gitgutter_sign_removed_first_line = '▔'
+let g:gitgutter_sign_modified_removed = '▋'
+highlight GitGutterDelete guifg=#f44747 guibg=#d16969 ctermfg=9 ctermbg=1
+highlight GitGutterChange guifg=#a0e580 guibg=#a0e580 ctermfg=10 ctermbg=2
+highlight GitGutterAdd guifg=#dfe74b guibg=#a0e580 ctermfg=11 ctermbg=3
 
 highlight TrailingWhitespace ctermbg=red guibg=red
 match TrailingWhitespace /\s\+$/
