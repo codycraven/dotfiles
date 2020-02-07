@@ -8,11 +8,13 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } " Explorer
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Completions
 Plug 'vim-airline/vim-airline' " Helpful status bar
 Plug 'editorconfig/editorconfig-vim' " Indent/EOL formatting rules
 Plug 'prettier/vim-prettier', { 'do': 'npm install' } " Code formatter
 Plug 'sheerun/vim-polyglot' " Language packs
+" Completions
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Framework
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } " JS support
 call plug#end()
 
 syntax on
@@ -25,7 +27,7 @@ set tabstop=4
 map <Leader>h :nohlsearch<CR>
 
 " nerdtree
-let g:NERDTreeShowHidden=1
+let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinPos = "right"
 map <Leader>e :NERDTreeToggle<CR>
 
@@ -49,3 +51,19 @@ augroup numbertoggle
 augroup END
 map <Leader>n :set relativenumber! nonumber!<CR>
 
+" Completions
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#ternjs#types = 1
+let g:deoplete#sources#ternjs#depths = 1
+let g:deoplete#sources#ternjs#docs = 1
+let g:deoplete#sources#ternjs#filter = 0
+let g:deoplete#sources#ternjs#case_insensitive = 1
+let g:deoplete#sources#ternjs#guess = 0
+let g:deoplete#sources#ternjs#expand_word_forward = 0
+let g:deoplete#sources#ternjs#omit_object_prototype = 0
+let g:deoplete#sources#ternjs#include_keywords = 1
+let g:deoplete#sources#ternjs#in_literal = 0
+let g:deoplete#sources#ternjs#filetypes = [
+                \ 'jsx',
+                \ 'vue',
+                \ ]
