@@ -34,6 +34,8 @@ map <C-_> <Leader>c<space>
 nmap <Leader>- :nohlsearch<CR>
 " copy selection to system clipboard
 vmap <C-c> "+y<CR>
+" open completions easier
+imap <C-Space> <C-X><C-O>
 
 " nerdtree
 let g:NERDTreeShowHidden = 1
@@ -77,6 +79,14 @@ augroup numbertoggle
 augroup END
 
 " completions
+augroup omnifuncs
+  autocmd!
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup end
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#ternjs#types = 1
 let g:deoplete#sources#ternjs#depths = 1
