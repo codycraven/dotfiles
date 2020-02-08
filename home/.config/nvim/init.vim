@@ -76,7 +76,7 @@ augroup numbertoggle
 	autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
-" Completions
+" completions
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#ternjs#types = 1
 let g:deoplete#sources#ternjs#depths = 1
@@ -92,3 +92,5 @@ let g:deoplete#sources#ternjs#filetypes = [
                 \ 'jsx',
                 \ 'vue',
                 \ ]
+" auto close annoying scratch window after completions
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
