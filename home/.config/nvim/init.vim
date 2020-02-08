@@ -28,7 +28,12 @@ set shiftwidth=0
 set tabstop=4
 set updatetime=100
 
-map <Leader>- :nohlsearch<CR>
+" toggle comments with nerdcommenter (acts on ctrl-/)
+map <C-_> <Leader>c<space>
+" clear search highlights
+nmap <Leader>- :nohlsearch<CR>
+" copy selection to system clipboard
+vmap <C-c> "+y<CR>
 
 " nerdtree
 let g:NERDTreeShowHidden = 1
@@ -70,7 +75,6 @@ augroup numbertoggle
 	autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 	autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
-map <Leader>n :set relativenumber! nonumber!<CR>
 
 " Completions
 let g:deoplete#enable_at_startup = 1
