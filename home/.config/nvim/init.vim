@@ -16,7 +16,8 @@ Plug 'preservim/nerdcommenter' " Language generic comments
 Plug 'airblade/vim-gitgutter'
 " Completions
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Framework
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } " JS support
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } " JS
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " Go
 call plug#end()
 
 syntax on
@@ -102,5 +103,6 @@ let g:deoplete#sources#ternjs#filetypes = [
                 \ 'jsx',
                 \ 'vue',
                 \ ]
+call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
 " auto close annoying scratch window after completions
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
