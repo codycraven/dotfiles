@@ -14,6 +14,7 @@ Plug 'prettier/vim-prettier', { 'do': 'npm install' } " Code formatter
 Plug 'sheerun/vim-polyglot' " Language packs
 Plug 'preservim/nerdcommenter' " Language generic comments
 Plug 'airblade/vim-gitgutter'
+Plug 'ctrlpvim/ctrlp.vim' " Fuzzy file finder
 " Completions
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Framework
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } " JS
@@ -78,6 +79,9 @@ augroup numbertoggle
 	autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 	autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
+
+" ctrlp
+let g:ctrlp_working_path_mode = 'ra'
 
 " completions
 augroup omnifuncs
