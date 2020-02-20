@@ -63,6 +63,9 @@ let g:gitgutter_sign_modified_removed = '▋'
 highlight GitGutterDelete guifg=#f44747 guibg=#d16969 ctermfg=9 ctermbg=1
 highlight GitGutterChange guifg=#a0e580 guibg=#a0e580 ctermfg=10 ctermbg=2
 highlight GitGutterAdd guifg=#dfe74b guibg=#a0e580 ctermfg=11 ctermbg=3
+" make gitgutter refresh all on exiting insert to prevent stale highlights
+" after `git add`
+autocmd InsertLeave * GitGutterAll
 
 highlight TrailingWhitespace ctermbg=red guibg=red
 match TrailingWhitespace /\s\+$/
@@ -85,12 +88,14 @@ let g:ctrlp_working_path_mode = 'ra'
 
 " completions
 augroup omnifuncs
-  autocmd!
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+	autocmd!
+	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+	autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+	" auto close annoying scratch window after completions
+	autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 augroup end
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#ternjs#types = 1
@@ -108,5 +113,3 @@ let g:deoplete#sources#ternjs#filetypes = [
                 \ 'vue',
                 \ ]
 call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
-" auto close annoying scratch window after completions
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
