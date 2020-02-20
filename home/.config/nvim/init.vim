@@ -15,7 +15,7 @@ Plug 'sheerun/vim-polyglot' " Language packs
 Plug 'preservim/nerdcommenter' " Language generic comments
 Plug 'mhinz/vim-signify' " VCS highlights
 Plug 'ctrlpvim/ctrlp.vim' " Fuzzy file finder
-Plug 'dense-analysis/ale' " Linter
+Plug 'dense-analysis/ale', { 'do': 'npm install -g prettier' } " Linter
 " Completions
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Framework
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } " JS
@@ -106,8 +106,6 @@ let g:deoplete#sources#ternjs#expand_word_forward = 0
 let g:deoplete#sources#ternjs#omit_object_prototype = 0
 let g:deoplete#sources#ternjs#include_keywords = 1
 let g:deoplete#sources#ternjs#in_literal = 0
-let g:deoplete#sources#ternjs#filetypes = [
-                \ 'jsx',
-                \ 'vue',
-                \ ]
-call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
+if exists("deoplete#custom#option")
+	call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
+endif

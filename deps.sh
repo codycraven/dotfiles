@@ -21,9 +21,9 @@ snap_install() {
 	sudo snap install "$1" --classic
 }
 
-pip_install() {
-	msg "Installing missing $1 from pip"
-	pip install --user "$1"
+pip3_install() {
+	msg "Installing missing $1 from pip3"
+	pip3 install --user "$1"
 }
 
 msg() {
@@ -39,7 +39,9 @@ has() {
 has curl || apt_install curl
 has git || apt_install git
 has node || snap_install node
+has pip3 || apt_install python3-pip
 has nvim || apt_install neovim
 
-pip list | grep pynvim -q || pip_install pynvim
+# Required for Deoplete in Neovim
+pip3 list | grep pynvim -q || pip3_install pynvim
 
