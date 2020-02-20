@@ -13,8 +13,9 @@ Plug 'editorconfig/editorconfig-vim' " Indent/EOL formatting rules
 Plug 'prettier/vim-prettier', { 'do': 'npm install' } " Code formatter
 Plug 'sheerun/vim-polyglot' " Language packs
 Plug 'preservim/nerdcommenter' " Language generic comments
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify' " VCS highlights
 Plug 'ctrlpvim/ctrlp.vim' " Fuzzy file finder
+Plug 'dense-analysis/ale' " Linter
 " Completions
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Framework
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } " JS
@@ -52,21 +53,6 @@ let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDTrimTrailingWhitespace = 1
 
-" gitgutter
-let g:gitgutter_escape_grep = 1 " prevent issues with color output alias
-"let g:gitgutter_diff_args = '-w' " ignore whitespace
-let g:gitgutter_sign_added = '▎'
-let g:gitgutter_sign_modified = '▎'
-let g:gitgutter_sign_removed = '▏'
-let g:gitgutter_sign_removed_first_line = '▔'
-let g:gitgutter_sign_modified_removed = '▋'
-highlight GitGutterDelete guifg=#f44747 guibg=#d16969 ctermfg=9 ctermbg=1
-highlight GitGutterChange guifg=#a0e580 guibg=#a0e580 ctermfg=10 ctermbg=2
-highlight GitGutterAdd guifg=#dfe74b guibg=#a0e580 ctermfg=11 ctermbg=3
-" make gitgutter refresh all on exiting insert to prevent stale highlights
-" after `git add`
-autocmd InsertLeave * GitGutterAll
-
 highlight TrailingWhitespace ctermbg=red guibg=red
 match TrailingWhitespace /\s\+$/
 augroup trailingwhitespace
@@ -82,6 +68,18 @@ augroup numbertoggle
 	autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 	autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
+
+" vcs highlights
+highlight SignColumn        ctermbg=NONE   ctermfg=NONE guibg=NONE gui=NONE
+highlight SignifySignDelete ctermbg=1      ctermfg=0    guibg=#d16969 guifg=#090909
+highlight SignifySignChange ctermbg=2      ctermfg=0    guibg=#acc2a2 guifg=#090909
+highlight SignifySignAdd    ctermbg=3      ctermfg=0    guibg=#d6db7b guifg=#090909
+
+" linter
+" see ftplugin files for fixer configuration
+let g:ale_fix_on_save = 1
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️'
 
 " ctrlp
 let g:ctrlp_working_path_mode = 'ra'
