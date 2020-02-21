@@ -32,16 +32,28 @@ msg() {
 	tput rmso
 }
 
-has() {
+has_cmd() {
 	command -v $1 >/dev/null
 }
 
-has curl || apt_install curl
-has git || apt_install git
-has node || snap_install node
-has pip3 || apt_install python3-pip
-has nvim || apt_install neovim
+has_pkg() {
+	dpkg -s "$1" >/dev/null 2>&1
+}
+
+has_pip3() {
+	pip3 list | grep "$1" >/dev/null
+}
+
+has_cmd curl || apt_install curl
+has_cmd git || apt_install git
+has_cmd node || snap_install node
+has_cmd pip3 || apt_install python3-pip
+has_cmd nvim || apt_install neovim
+
+# Required for Xresources conf
+has_pkg libxft2 || apt_install libxft2
+has_pkg ttf-dejavu || apt_install ttf-dejavu
 
 # Required for Deoplete in Neovim
-pip3 list | grep pynvim -q || pip3_install pynvim
+has_pip3 pynvim || pip3_install pynvim
 
