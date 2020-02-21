@@ -10,7 +10,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } " Explorer
 Plug 'vim-airline/vim-airline' " Helpful status bar
 Plug 'editorconfig/editorconfig-vim' " Indent/EOL formatting rules
-Plug 'prettier/vim-prettier', { 'do': 'npm install' } " Code formatter
 Plug 'sheerun/vim-polyglot' " Language packs
 Plug 'preservim/nerdcommenter' " Language generic comments
 Plug 'mhinz/vim-signify' " VCS highlights
