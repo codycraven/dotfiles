@@ -49,6 +49,7 @@ has_cmd git || apt_install git
 has_cmd node || snap_install node
 has_cmd pip3 || apt_install python3-pip
 has_cmd nvim || apt_install neovim
+has_pkg byobu || apt_install byobu
 
 # Required for Xresources conf
 has_pkg libxft2 || apt_install libxft2
