@@ -23,10 +23,6 @@ make -j4
 sudo make install
 cd ../../
 
-msg "Move v4l2sink shared object to obs config"
-mkdir -p ~/.config/obs-studio/plugins/v4l2sink/bin/64bit
-cp /usr/lib/obs-plugins/v4l2sink.so ~/.config/obs-studio/plugins/v4l2sink/bin/64bit
-
 tput smso
 msg "Build complete, now configure OBS"
 cat << EOF

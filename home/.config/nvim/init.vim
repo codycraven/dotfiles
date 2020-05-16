@@ -40,6 +40,12 @@ vmap <C-c> "+y<CR>
 " open completions easier
 imap <C-Space> <C-X><C-O>
 
+" resize splits
+map <M-k> :resize -5<CR>
+map <M-j> :resize +5<CR>
+map <M-h> :vertical resize -10<CR>
+map <M-l> :vertical resize +10<CR>
+
 " nerdtree
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinPos = "right"
