@@ -7,6 +7,7 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
+Plug 'christoomey/vim-tmux-navigator' " Tmux pane movement
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } " Explorer
 Plug 'vim-airline/vim-airline' " Helpful status bar
 Plug 'editorconfig/editorconfig-vim' " Indent/EOL formatting rules
