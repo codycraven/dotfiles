@@ -44,6 +44,7 @@ imap <C-Space> <C-X><C-O>
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinPos = "right"
 map <Leader>e :NERDTreeToggle<CR>
+map <Leader>f :NERDTreeFocus<CR>
 
 " vim-airline
 set noshowmode
