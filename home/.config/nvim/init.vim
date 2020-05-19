@@ -25,11 +25,13 @@ call plug#end()
 syntax on
 filetype plugin on
 colorscheme default
+hi CursorLine cterm=NONE ctermbg=234 guibg=234
 
 let mapleader="\<SPACE>"
 set shiftwidth=0
 set tabstop=4
 set updatetime=100
+set cursorline
 
 " toggle comments with nerdcommenter (acts on ctrl-/)
 map <C-_> <Leader>c<space>
