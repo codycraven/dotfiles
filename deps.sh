@@ -50,6 +50,7 @@ has_cmd node || snap_install node
 has_cmd pip3 || apt_install python3-pip
 has_cmd nvim || apt_install neovim
 has_pkg byobu || apt_install byobu
+has_pkg inotify-tools || apt_install inotify-tools
 
 # Required for using OBS as a webcam
 has_cmd ffmpeg || snap_install ffmpeg
