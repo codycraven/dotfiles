@@ -24,7 +24,7 @@ copy_files_from_dir_to_dir() {
 	# - mkdir -p todir
 	# - cp frompath topath
 	s/^\(.*\)\n\(.*\)\(\/.*\)$/mkdir -p "\2"; cp "\1" "\2\3"/p
-	' | bash 
+	' | bash
 }
 
 copy_files_from_dir_to_dir home "$HOME"

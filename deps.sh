@@ -52,17 +52,6 @@ has_cmd nvim || apt_install neovim
 has_pkg byobu || apt_install byobu
 has_pkg inotify-tools || apt_install inotify-tools
 
-# Required for using OBS as a webcam
-has_cmd ffmpeg || snap_install ffmpeg
-if ! has_cmd obs; then
-	msg "Installing missing obs from PPA"
-	sudo add-apt-repository ppa:obsproject/obs-studio
-	sudo apt-get update
-	sudo apt-get install obs-studio
-fi
-has_pkg v4l2loopback-dkms || apt_install v4l2loopback-dkms
-has_pkg qtbase5-dev || apt_install qtbase5-dev
-
 # Required for Xresources conf
 has_pkg libxft2 || apt_install libxft2
 has_pkg ttf-dejavu || apt_install ttf-dejavu
