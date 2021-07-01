@@ -51,6 +51,7 @@ has_cmd pip3 || apt_install python3-pip
 has_cmd nvim || apt_install neovim
 has_pkg byobu || apt_install byobu
 has_pkg inotify-tools || apt_install inotify-tools
+has_pkg inotify-hookable || apt_install inotify-hookable
 
 # Required for Xresources conf
 has_pkg libxft2 || apt_install libxft2
