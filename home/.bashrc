@@ -5,6 +5,9 @@ case $- in
 esac
 
 export EDITOR='nvim'
+if [[ -d "$HOME/go/bin" ]]; then
+	export PATH="$PATH:$HOME/go/bin"
+fi
 
 has_color=$(command -v tput > /dev/null && tput setaf 1 >&/dev/null && echo 1 || echo 0)
 has_git=$(command -v git > /dev/null && echo 1 || echo 0)
