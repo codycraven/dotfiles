@@ -17,6 +17,13 @@ fi
 if [ $has_helm -eq 1 ]; then
 	source <(helm completion bash)
 fi
+if [ -z "$SSH_AUTH_SOCK" ]; then
+	if ! pgrep ssh-agent > /dev/null ; then
+		ssh-agent -s > $HOME/.ssh/ssh-agent
+		echo "Created new ssh-agent"
+	fi
+	eval "$(cat $HOME/.ssh/ssh-agent)" >/dev/null 2>&1
+fi
 
 function prompt_cmd {
 	local EXIT="$?"
@@ -79,12 +86,12 @@ shopt -s globstar
 
 # Load colors (aliases in .bash_aliases)
 if [ -x /usr/bin/dircolors ]; then
-	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+	test -r $HOME/.dircolors && eval "$(dircolors -b $HOME/.dircolors)" || eval "$(dircolors -b)"
 fi
 
 # Load aliases
-if [ -f ~/.bash_aliases ]; then
-	. ~/.bash_aliases
+if [ -f $HOME/.bash_aliases ]; then
+	. $HOME/.bash_aliases
 fi
 
 # Enable completions (comment out if already included in /etc/bash.bashrc /etc/profile)
