@@ -102,3 +102,7 @@ if ! shopt -oq posix; then
 		. /etc/bash_completion
 	fi
 fi
+
+# SSH Agent
+keychain -q --nogui "$HOME/.ssh/id_rsa"
+source "$HOME/.keychain/$HOSTNAME-sh"

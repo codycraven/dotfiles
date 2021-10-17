@@ -16,11 +16,6 @@ apt_install() {
 	sudo apt install "$1" -y
 }
 
-snap_install() {
-	msg "Installing missing $1 from snap"
-	sudo snap install "$1" --classic
-}
-
 pip3_install() {
 	msg "Installing missing $1 from pip3"
 	pip3 install --user "$1"
@@ -46,12 +41,12 @@ has_pip3() {
 
 has_cmd curl || apt_install curl
 has_cmd git || apt_install git
-has_cmd node || snap_install node
 has_cmd pip3 || apt_install python3-pip
 has_cmd nvim || apt_install neovim
 has_pkg byobu || apt_install byobu
 has_pkg inotify-tools || apt_install inotify-tools
 has_pkg inotify-hookable || apt_install inotify-hookable
+has_pkg keychain || apt_install keychain
 
 # Required for Xresources conf
 has_pkg libxft2 || apt_install libxft2
