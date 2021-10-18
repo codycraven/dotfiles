@@ -17,5 +17,6 @@ exec docker run $ARGS --rm \
 	-u "$(id -u):$(id -g)" \
 	--mount type=bind,source="$HOME"/.npmrc,target=/home/node/.npmrc \
 	-v "$DIR:$DIR" \
+	-v /etc/passwd:/etc/passwd:ro \
 	-w "$DIR" \
 	node:$NODE_VERSION $@
