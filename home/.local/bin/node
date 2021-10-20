@@ -11,11 +11,11 @@ fi
 
 exec docker run $ARGS --rm \
 	-u node:node \
-	-v "$HOME/.gitconfig:/home/node/.gitconfig" \
-	-v "$HOME/.ssh:/home/node/.ssh" \
-	-v "$HOME/.npm:/home/node/.npm" \
+	-v "$HOME/.gitconfig:/home/$USER/.gitconfig" \
+	-v "$HOME/.ssh:/home/$USER/.ssh" \
+	-v "$HOME/.npm:/home/$USER/.npm" \
 	-u "$(id -u):$(id -g)" \
-	--mount type=bind,source="$HOME"/.npmrc,target=/home/node/.npmrc \
+	--mount type=bind,source="$HOME"/.npmrc,target=/home/$USER/.npmrc \
 	-v "$DIR:$DIR" \
 	-v /etc/passwd:/etc/passwd:ro \
 	-w "$DIR" \
