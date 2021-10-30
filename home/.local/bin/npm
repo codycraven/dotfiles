@@ -1,3 +1,5 @@
 #!/usr/bin/env sh
 
-exec node npm $@
+exec node npm \
+	-userconfig "/home/$USER/.npm-mount/.npmrc" \
+	$@

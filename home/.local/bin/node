@@ -14,8 +14,8 @@ exec docker run $ARGS --rm \
 	-v "$HOME/.gitconfig:/home/$USER/.gitconfig" \
 	-v "$HOME/.ssh:/home/$USER/.ssh" \
 	-v "$HOME/.npm:/home/$USER/.npm" \
+	-v "$HOME/.npm-mount:/home/$USER/.npm-mount" \
 	-u "$(id -u):$(id -g)" \
-	--mount type=bind,source="$HOME"/.npmrc,target=/home/$USER/.npmrc \
 	-v "$DIR:$DIR" \
 	-v /etc/passwd:/etc/passwd:ro \
 	-w "$DIR" \
