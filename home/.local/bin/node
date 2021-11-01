@@ -9,14 +9,17 @@ if [ -t 0 ] ; then
 	ARGS="${ARGS} -t"
 fi
 
+# This command assumes usage of podman, which handles uid mapping natively.
+#
+# If using docker, be sure to add the following two options to the exec.
+#    -u "$(id -u):$(id -g)" \
+#    -v /etc/passwd:/etc/passwd:ro \
+
 exec docker run $ARGS --rm \
-	-u node:node \
 	-v "$HOME/.gitconfig:/home/$USER/.gitconfig" \
 	-v "$HOME/.ssh:/home/$USER/.ssh" \
 	-v "$HOME/.npm:/home/$USER/.npm" \
 	-v "$HOME/.npm-mount:/home/$USER/.npm-mount" \
-	-u "$(id -u):$(id -g)" \
 	-v "$DIR:$DIR" \
-	-v /etc/passwd:/etc/passwd:ro \
 	-w "$DIR" \
 	node:$NODE_VERSION $@
