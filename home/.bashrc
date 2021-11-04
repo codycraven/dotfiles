@@ -17,13 +17,6 @@ fi
 if [ $has_helm -eq 1 ]; then
 	source <(helm completion bash)
 fi
-if [ -z "$SSH_AUTH_SOCK" ]; then
-	if ! pgrep ssh-agent > /dev/null ; then
-		ssh-agent -s > $HOME/.ssh/ssh-agent
-		echo "Created new ssh-agent"
-	fi
-	eval "$(cat $HOME/.ssh/ssh-agent)" >/dev/null 2>&1
-fi
 
 function prompt_cmd {
 	local EXIT="$?"
