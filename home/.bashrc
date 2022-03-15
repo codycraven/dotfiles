@@ -97,5 +97,5 @@ if ! shopt -oq posix; then
 fi
 
 # SSH Agent
-keychain -q --nogui "$HOME/.ssh/id_rsa"
+keychain -q --nogui "$HOME/.ssh/id_ed25519"
 source "$HOME/.keychain/$HOSTNAME-sh"
