@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-NODE_VERSION="${NODE_VERSION:-14}"
+NODE_VERSION="${NODE_VERSION:-16}"
 DIR="${DIR:-$(pwd)}"
 ARGS="${ARGS:-""}"
 
