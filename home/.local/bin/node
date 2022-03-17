@@ -1,12 +1,12 @@
 #!/usr/bin/env sh
 
 NODE_VERSION="${NODE_VERSION:-14}"
-DIR="$(pwd)"
-ARGS="-i"
+DIR="${DIR:-$(pwd)}"
+ARGS="${ARGS:-""}"
 
 # If tty
 if [ -t 0 ] ; then
-	ARGS="${ARGS} -t"
+	ARGS="${ARGS} -i -t"
 fi
 
 # This command assumes usage of podman, which handles uid mapping natively.
