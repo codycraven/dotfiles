@@ -96,6 +96,10 @@ if ! shopt -oq posix; then
 	fi
 fi
 
+if [ -d "$HOME/.cargo/env" ]; then
+	. "$HOME/.cargo/env"
+fi
+
 # SSH Agent
 keychain -q --nogui "$HOME/.ssh/id_ed25519"
 source "$HOME/.keychain/$HOSTNAME-sh"
